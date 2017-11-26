@@ -9,41 +9,139 @@
     <collation id="3" parent="1" name="BINARY"/>
     <collation id="4" parent="1" name="NOCASE"/>
     <collation id="5" parent="1" name="RTRIM"/>
-    <table id="6" parent="2" name="products"/>
-    <table id="7" parent="2" name="sqlite_master">
+    <table id="6" parent="2" name="bug_product"/>
+    <table id="7" parent="2" name="bugs"/>
+    <table id="8" parent="2" name="products"/>
+    <table id="9" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="8" parent="6" name="id">
+    <table id="10" parent="2" name="users"/>
+    <column id="11" parent="6" name="bug_id">
       <DataType>INTEGER|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="9" parent="6" name="name">
+    <column id="12" parent="6" name="product_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="13" parent="6" name="sqlite_autoindex_bug_product_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>bug_id
+product_id</ColNames>
+      <ColumnCollations>
+</ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="14" parent="6" name="IDX_897D061DFA3DB3D5">
+      <ColNames>bug_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="15" parent="6" name="IDX_897D061D4584665A">
+      <ColNames>product_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="16" parent="6">
+      <ColNames>bug_id
+product_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_bug_product_1</UnderlyingIndexName>
+    </key>
+    <column id="17" parent="7" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="7" name="engineer_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="19" parent="7" name="reporter_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <column id="20" parent="7" name="description">
+      <Position>3</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="7" name="created">
+      <Position>4</Position>
+      <DataType>DATETIME|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="7" name="status">
+      <Position>5</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="23" parent="7" name="IDX_1E197C9F8D8CDF1">
+      <ColNames>engineer_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="24" parent="7" name="IDX_1E197C9E1CFE6F5">
+      <ColNames>reporter_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="25" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="26" parent="7" name="FK_1E197C9F8D8CDF1">
+      <ColNames>engineer_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="27" parent="7" name="FK_1E197C9E1CFE6F5">
+      <ColNames>reporter_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="28" parent="8" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="8" name="name">
       <Position>1</Position>
       <DataType>VARCHAR(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="10" parent="6">
+    <key id="30" parent="8">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="11" parent="7" name="type">
+    <column id="31" parent="9" name="type">
       <DataType>text|0</DataType>
     </column>
-    <column id="12" parent="7" name="name">
+    <column id="32" parent="9" name="name">
       <Position>1</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="13" parent="7" name="tbl_name">
+    <column id="33" parent="9" name="tbl_name">
       <Position>2</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="14" parent="7" name="rootpage">
+    <column id="34" parent="9" name="rootpage">
       <Position>3</Position>
       <DataType>integer|0</DataType>
     </column>
-    <column id="15" parent="7" name="sql">
+    <column id="35" parent="9" name="sql">
       <Position>4</Position>
       <DataType>text|0</DataType>
     </column>
+    <column id="36" parent="10" name="id">
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="10" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="38" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>
